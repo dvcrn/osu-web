@@ -13,6 +13,7 @@ mysqldump --skip-opt -d osu \
   osu_beatmapsets \
   osu_changelog \
   osu_countries \
+  osu_events \
   osu_login_attempts \
   osu_user_achievements \
   osu_user_banhistory \
