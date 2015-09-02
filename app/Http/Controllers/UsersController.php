@@ -31,6 +31,7 @@ use App\Models\Achievement;
 use App\Transformers\UserTransformer;
 use App\Transformers\UserStatisticsTransformer;
 use App\Transformers\UserAchievementTransformer;
+use App\Transformers\EventTransformer;
 
 class UsersController extends Controller {
 
@@ -126,6 +127,11 @@ class UsersController extends Controller {
 			new UserAchievementTransformer
 		);
 
+		$recentActivities = fractal_collection_array(
+			$user->events()->recent()->get(),
+			new EventTransformer
+		);
+
 		$userArray = fractal_item_array($user, new UserTransformer);
 
 		$achievementsCounts = [
@@ -134,7 +140,7 @@ class UsersController extends Controller {
 		];
 
 		return view('users.show', compact(
-			'user', 'mode', 'allStats', 'userPage', 'userArray', 'recentAchievements', 'achievementsCounts'
+			'user', 'mode', 'allStats', 'userPage', 'userArray', 'recentAchievements', 'achievementsCounts', 'recentActivities'
 		));
 	}
 }

@@ -60,5 +60,9 @@
 		{!! json_encode(["page" => $userPage]) !!}
 	</script>
 
+	<script id="json-user-recent-activities" type="application/json">
+		{!! json_encode($recentActivities) !!}
+	</script>
+
 	<script src="{{ elixir("js/react/profile_page.js") }}" data-turbolinks-eval="always" data-turbolinks-track></script>
 @endsection
